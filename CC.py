@@ -25,14 +25,12 @@ def bereken_kans_gelijk(d):
 kans_anders = bereken_kans_anders(d)
 kans_gelijk = bereken_kans_gelijk(d)
 
-def P(i,d,n):
-    result = 0; 
-    for getal in range(0,n):
-        result += math.comb(n, getal) * (getal*kans_gelijk + (n-getal)*kans_anders)
-    return result
+def P(i,n):
+    return math.comb(n, i) * (i*kans_anders + (n-i)*kans_gelijk)
+
 
 E = 0
 for i in range(1, n+1):
-    E += i * P(i,d,n)
+    E += i * P(i,n)
 
 print(E)
