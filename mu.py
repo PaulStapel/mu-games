@@ -1,15 +1,33 @@
 import math
 
-n = input()
-k = input()
+n = int(input())
+k = int(input())
 d = []
 
 # d_i = d[i-1]
 for i in range(0, k):
-    d.append(input())
+    d.append(float(input()))
+
+def bereken_kans_anders(d): 
+    prob = 0
+    for i in range(0,k): 
+        for j in range(i,k):
+            if (i != j):
+                prob += d[i] * d[j]
+    return prob
+
+def bereken_kans_gelijk(d): 
+    prob = 0
+    for i in range(0,k): 
+        prob += d[i] * d[i]
+    return prob
+
+kans_anders = bereken_kans_anders(d)
+kans_gelijk = bereken_kans_gelijk(d)
 
 def P(i,d,n):
-    pass
+    for getal in range(0,n):
+        math.comb(n, getal) * (getal*kans_gelijk + (n-getal)*kans_anders)
 
 E = 0
 for i in range(1, n+1):
