@@ -11,7 +11,7 @@ for i in range(0, k):
 def bereken_kans_anders(d): 
     prob = 0
     for i in range(0,k): 
-        for j in range(i,k):
+        for j in range(0,k):
             if (i != j):
                 prob += d[i] * d[j]
     return prob
